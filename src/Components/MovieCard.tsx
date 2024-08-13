@@ -1,7 +1,15 @@
-import { Card, CardContent, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { LocalMoviesOutlined as MovieIcon } from "@mui/icons-material";
 import { Film } from "../api/graphql/generated/graphql";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   movie: Film;
@@ -9,9 +17,19 @@ type Props = {
 
 export default function MovieCard(props: Props) {
   const { movie } = props;
-  const { title, episodeID, releaseDate, director, producers } = movie;
+  const { id, title, episodeID, releaseDate, director, producers } = movie;
+
+  const navigate = useNavigate();
+
   return (
-    <Card sx={{ borderRadius: "12px", height: "100%" }}>
+    <Card
+      sx={{
+        borderRadius: "12px",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <CardContent
         sx={{
           display: "flex",
@@ -24,7 +42,7 @@ export default function MovieCard(props: Props) {
       >
         <MovieIcon fontSize="large" />
       </CardContent>
-      <CardContent>
+      <CardContent sx={{ flexGrow: "1" }}>
         <Stack spacing={1} direction="row">
           <Typography variant="h6" fontWeight="600">
             {"Episode " + episodeID + ": "}
@@ -53,6 +71,15 @@ export default function MovieCard(props: Props) {
           </Stack>
         </Stack>
       </CardContent>
+      <CardActions sx={{ display: "flex", justifyContent: "end" }}>
+        <Button
+          variant="contained"
+          color="warning"
+          onClick={() => navigate(id)}
+        >
+          Opening crawl
+        </Button>
+      </CardActions>
     </Card>
   );
 }
