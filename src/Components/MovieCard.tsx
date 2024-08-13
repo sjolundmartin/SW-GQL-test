@@ -74,7 +74,7 @@ export default function MovieCard(props: Props) {
       <CardActions sx={{ display: "flex", justifyContent: "end" }}>
         <Button
           variant="contained"
-          color="warning"
+          sx={{ bgcolor: "black" }}
           onClick={() => navigate(id)}
         >
           Opening crawl

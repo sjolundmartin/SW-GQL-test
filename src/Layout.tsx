@@ -1,20 +1,25 @@
-import { AppBar, Container, MenuItem, Toolbar } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type Props = {
   children: React.ReactNode;
 };
 export default function Layout(props: Props) {
-  const navigate = useNavigate();
   return (
     <>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <MenuItem onClick={() => navigate("/")}>Home</MenuItem>
-          <MenuItem onClick={() => navigate("movies")}>Movies</MenuItem>
-        </Toolbar>
-      </AppBar>
+      <Box display="flex" justifyContent="center" padding={4}>
+        <Typography
+          variant="h2"
+          color="yellow"
+          align="center"
+          component={Link}
+          to="/"
+          sx={{ textDecoration: "none" }}
+        >
+          Star Wars Movie List
+        </Typography>
+      </Box>
       <Container sx={{ p: 4, height: "100vh" }}>{props.children}</Container>
     </>
   );
