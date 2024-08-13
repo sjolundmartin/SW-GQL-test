@@ -12,7 +12,7 @@ export default function Layout(props: Props) {
       <AppBar position="static">
         <Toolbar variant="dense">
           <MenuItem onClick={() => navigate("/")}>Home</MenuItem>
-          <MenuItem onClick={() => navigate("test")}>Test page</MenuItem>
+          <MenuItem onClick={() => navigate("movies")}>Movies</MenuItem>
         </Toolbar>
       </AppBar>
       <Container sx={{ p: 4 }}>{props.children}</Container>

@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import Main from "./Main/Main";
-import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+
+import reportWebVitals from "./reportWebVitals";
+
+import Main from "./Main/Main";
 import Layout from "./Layout";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";

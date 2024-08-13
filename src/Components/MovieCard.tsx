@@ -1,3 +1,58 @@
-export default function MovieCard() {
-  return <div>MovieCard</div>;
+import { Card, CardContent, Stack, Typography } from "@mui/material";
+import { LocalMoviesOutlined as MovieIcon } from "@mui/icons-material";
+import { Film } from "../api/graphql/generated/graphql";
+import moment from "moment";
+
+type Props = {
+  movie: Film;
+};
+
+export default function MovieCard(props: Props) {
+  const { movie } = props;
+  const { title, episodeID, releaseDate, director, producers } = movie;
+  return (
+    <Card sx={{ borderRadius: "12px", height: "100%" }}>
+      <CardContent
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100px",
+          p: 0,
+          bgcolor: "grey.200",
+        }}
+      >
+        <MovieIcon fontSize="large" />
+      </CardContent>
+      <CardContent>
+        <Stack spacing={1} direction="row">
+          <Typography variant="h6" fontWeight="600">
+            {"Episode " + episodeID + ": "}
+          </Typography>
+          <Typography variant="h6" fontWeight="500">
+            {title}
+          </Typography>
+        </Stack>
+        <Typography variant="body2" color="grey.500">
+          {"Released " + moment(releaseDate).format("MMMM Do YYYY")}
+        </Typography>
+        <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
+          <Typography variant="body1" fontWeight="bold">
+            Director:
+          </Typography>
+          <Typography variant="body1">{director}</Typography>
+        </Stack>
+        <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
+          <Typography variant="body1" fontWeight="bold">
+            Producers:
+          </Typography>
+          <Stack>
+            {producers?.map((producer) => (
+              <Typography variant="body1">{producer}</Typography>
+            ))}
+          </Stack>
+        </Stack>
+      </CardContent>
+    </Card>
+  );
 }
