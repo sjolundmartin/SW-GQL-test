@@ -28,6 +28,8 @@ export default function MovieCard(props: Props) {
         height: "100%",
         display: "flex",
         flexDirection: "column",
+        bgcolor: "grey.600",
+        color: "white",
       }}
     >
       <CardContent
@@ -40,7 +42,7 @@ export default function MovieCard(props: Props) {
           bgcolor: "grey.200",
         }}
       >
-        <MovieIcon fontSize="large" />
+        <MovieIcon fontSize="large" sx={{ color: "black" }} />
       </CardContent>
       <CardContent sx={{ flexGrow: "1" }}>
         <Stack spacing={1} direction="row">
@@ -51,20 +53,20 @@ export default function MovieCard(props: Props) {
             {title}
           </Typography>
         </Stack>
-        <Typography variant="body2" color="grey.500">
+        <Typography variant="body2" color="grey.400">
           {"Released " + moment(releaseDate).format("MMMM Do YYYY")}
         </Typography>
-        <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-          <Typography variant="body1" fontWeight="bold">
-            Director:
+        <Stack sx={{ mt: 4 }} alignItems="center">
+          <Typography variant="caption" color="grey.400">
+            Director
           </Typography>
           <Typography variant="body1">{director}</Typography>
         </Stack>
-        <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
-          <Typography variant="body1" fontWeight="bold">
-            Producers:
+        <Stack sx={{ mt: 1 }} alignItems="center">
+          <Typography variant="caption" color="grey.400">
+            Producers
           </Typography>
-          <Stack>
+          <Stack alignItems="center">
             {producers?.map((producer) => (
               <Typography variant="body1">{producer}</Typography>
             ))}
