@@ -5,6 +5,7 @@ import { ArrowForward } from "@mui/icons-material";
 
 export default function Home() {
   const navigate = useNavigate();
+
   return (
     <Stack spacing={4}>
       <Typography color="yellow" variant="h6">
